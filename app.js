@@ -42,3 +42,4 @@ const restart = async () => {
     await delay(10000)
     createBot()
 }
+createBot()
