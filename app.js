@@ -1,6 +1,10 @@
 const mineflayer = require('mineflayer')
+require('dotenv').config()
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
 
 const createBot = () => {
+
     const bot1 = mineflayer.createBot({
         host: 'simplyvanilla.net', // minecraft server ip
         username: process.env.BOT1_USER, // minecraft username
@@ -28,10 +32,13 @@ const createBot = () => {
         bot1.autoclicker.start();
     });
 
-    bot1.on('end', createBot)
+    bot1.on('end', restart)
     bot1.on('error', (err) => console.log(err))
-    bot2.on('end', createBot)
+    bot2.on('end', restart)
     bot2.on('error', (err) => console.log(err))
 }
 
-createBot()
+const restart = async () => {
+    await delay(10000)
+    createBot()
+}
