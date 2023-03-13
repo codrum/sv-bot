@@ -26,16 +26,16 @@ const createBot = () => {
             swing_through: ['experience_orb'], // Hit through entities (Default: ['experience_orb'])
             blacklist: ['player'], // Do not hit certain entities (Default: ['player'])
             stop_on_window: true, // Stop if a window is opened (Default: true)
-            always_swing: false, // Always swing, even if there is no entity (Default: true)
+            always_swing: true, // Always swing, even if there is no entity (Default: true)
             delay: 1500
         }
         bot1.autoclicker.start();
     });
 
-    bot1.on('end', restart)
     bot1.on('error', (err) => console.log(err))
-    bot2.on('end', restart)
+    bot1.on('end', restart)
     bot2.on('error', (err) => console.log(err))
+    bot2.on('end', restart)
 }
 
 const restart = async () => {
