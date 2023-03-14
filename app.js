@@ -37,7 +37,7 @@ const createBot = () => {
     const autoClicker = {
         running: undefined,
         click_interval: 3000,
-        // blacklist: ['experience_orb'],
+        blacklist: [],
         start: () => {
             if (autoClicker.running) return
             autoClicker.running = setInterval(async function () {
