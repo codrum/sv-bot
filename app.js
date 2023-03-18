@@ -19,6 +19,12 @@ const createBot = () => {
         auth: 'microsoft' // for offline mode servers, you can set this to 'offline'
 
     })
+    const bot3 = mineflayer.createBot({
+        host: 'simplyvanilla.net', // minecraft server ip
+        username: process.env.BOT3_USER, // minecraft username
+        auth: 'microsoft' // for offline mode servers, you can set this to 'offline'
+
+    })
     bot1.on('spawn', function () {
         // bot1.loadPlugin(require('mineflayer-autoclicker'))
         // bot1.autoclicker.options = {
@@ -52,10 +58,11 @@ const createBot = () => {
     }
 
     bot1.on('error', (err) => console.log(err))
-    bot1.on('kicked', console.log)
     bot1.on('end', restart)
     bot2.on('error', (err) => console.log(err))
     bot2.on('end', restart)
+    bot3.on('error', (err) => console.log(err))
+    bot3.on('end', restart)
 }
 
 const restart = async () => {
